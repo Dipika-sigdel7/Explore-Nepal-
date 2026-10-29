@@ -887,3 +887,317 @@ button {
         height: 190px;
     }
 }
+
+
+/* =========================================
+   EXPLORE NEPAL — PREMIUM VISUAL UPGRADE
+   Add this at the END of style.css
+========================================= */
+
+:root {
+    --travel-green: #176b55;
+    --travel-green-dark: #104b3e;
+    --travel-gold: #e6b866;
+    --travel-cream: #faf8f2;
+    --travel-ink: #172923;
+    --travel-muted: #718078;
+    --travel-shadow: 0 20px 55px rgba(24, 55, 43, 0.12);
+}
+
+/* Smooth navigation */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+body {
+    background: var(--travel-cream);
+    color: var(--travel-ink);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* More premium navigation */
+.navbar {
+    transition:
+        background 0.35s ease,
+        box-shadow 0.35s ease,
+        padding 0.35s ease;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+}
+
+.navbar a {
+    transition: color 0.25s ease, opacity 0.25s ease;
+}
+
+.navbar a:hover {
+    color: var(--travel-green);
+}
+
+/* Hero image: cinematic parallax-like movement */
+.hero {
+    isolation: isolate;
+    overflow: hidden;
+}
+
+.hero::before {
+    animation: heroImageDrift 24s ease-in-out infinite alternate;
+    transform-origin: center;
+    will-change: transform;
+}
+
+.hero::after {
+    pointer-events: none;
+}
+
+@keyframes heroImageDrift {
+    from { transform: scale(1); }
+    to { transform: scale(1.09); }
+}
+
+/* Hero text entrance */
+.hero h1,
+.hero h2,
+.hero p,
+.hero .hero-content > *,
+.hero .hero-content {
+    animation: heroTextReveal 0.9s cubic-bezier(.2, .7, .2, 1) both;
+}
+
+.hero h1 { animation-delay: 0.12s; }
+.hero p { animation-delay: 0.28s; }
+
+@keyframes heroTextReveal {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+        filter: blur(5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
+/* Search panel */
+.hero input,
+.hero select,
+.hero button,
+.search-box input {
+    transition:
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        transform 0.25s ease;
+}
+
+.hero input:focus,
+.hero select:focus,
+.search-box input:focus {
+    outline: none;
+    border-color: var(--travel-green);
+    box-shadow: 0 0 0 4px rgba(23, 107, 85, 0.12);
+}
+
+/* Destination cards */
+.destination-card,
+.destination-card a,
+.destination-card img {
+    transition:
+        transform 0.5s cubic-bezier(.2, .7, .2, 1),
+        box-shadow 0.5s ease,
+        filter 0.5s ease;
+}
+
+.destination-card {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(22, 48, 37, 0.07);
+}
+
+.destination-card:hover {
+    transform: translateY(-9px);
+    box-shadow: var(--travel-shadow);
+}
+
+.destination-card img {
+    will-change: transform;
+}
+
+.destination-card:hover img {
+    transform: scale(1.07);
+}
+
+.destination-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background: linear-gradient(
+        180deg,
+        transparent 35%,
+        rgba(9, 27, 20, 0.08) 55%,
+        rgba(9, 27, 20, 0.5) 100%
+    );
+    opacity: 0.6;
+    transition: opacity 0.4s ease;
+}
+
+.destination-card:hover::after {
+    opacity: 1;
+}
+
+/* Keep card content above the overlay */
+.destination-card > * {
+    position: relative;
+}
+
+/* District explorer chips */
+.district-chip {
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.district-chip:hover {
+    transform: translateY(-3px);
+    background: var(--travel-green);
+    color: white;
+    box-shadow: 0 8px 20px rgba(23, 107, 85, 0.18);
+}
+
+.district-chip:active {
+    transform: scale(0.96);
+}
+
+/* Buttons */
+button,
+.btn,
+.button,
+a.btn {
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease;
+}
+
+button:hover,
+.btn:hover,
+.button:hover,
+a.btn:hover {
+    transform: translateY(-2px);
+}
+
+button:active,
+.btn:active,
+.button:active,
+a.btn:active {
+    transform: translateY(0) scale(0.98);
+}
+
+/* Hotel banner and trip section */
+.hotel-banner,
+.trip-cta {
+    position: relative;
+    overflow: hidden;
+}
+
+.hotel-banner::after,
+.trip-cta::after {
+    content: "";
+    position: absolute;
+    top: -60%;
+    left: -80%;
+    width: 45%;
+    height: 220%;
+    transform: rotate(22deg);
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.13),
+        transparent
+    );
+    pointer-events: none;
+    animation: lightSweep 8s ease-in-out infinite;
+}
+
+@keyframes lightSweep {
+    0%, 65% { left: -80%; }
+    100% { left: 140%; }
+}
+
+/* Scroll reveal — elements begin hidden until JS reveals them */
+.reveal-ready .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition:
+        opacity 0.75s ease,
+        transform 0.75s cubic-bezier(.2, .7, .2, 1);
+}
+
+.reveal-ready .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal-ready .reveal:nth-child(2) { transition-delay: 80ms; }
+.reveal-ready .reveal:nth-child(3) { transition-delay: 160ms; }
+.reveal-ready .reveal:nth-child(4) { transition-delay: 240ms; }
+
+/* Floating decorative effect */
+.feature-item,
+.stat-item {
+    transition: transform 0.3s ease;
+}
+
+.feature-item:hover,
+.stat-item:hover {
+    transform: translateY(-4px);
+}
+
+/* Keyboard accessibility */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+    outline: 3px solid rgba(23, 107, 85, 0.65);
+    outline-offset: 4px;
+}
+
+/* Mobile optimization */
+@media (max-width: 768px) {
+    .hero::before {
+        animation-duration: 32s;
+    }
+
+    .destination-card:hover {
+        transform: translateY(-4px);
+    }
+
+    .hotel-banner::after,
+    .trip-cta::after {
+        animation: none;
+    }
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .reveal-ready .reveal {
+        opacity: 1;
+        transform: none;
+    }
+}
