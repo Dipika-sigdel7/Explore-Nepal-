@@ -16,86 +16,144 @@
 </head>
 <body>
 
-    <!-- NAVIGATION -->
-    <header class="navbar">
-        <a href="#home" class="logo">
-            <span class="logo-icon">▲</span>
-            Explore <span>Nepal</span>
+<!-- FULL-SCREEN HERO -->
+<section class="explore-hero" id="home">
+
+    <!-- Navigation -->
+    <header class="explore-navbar">
+        <a href="/" class="explore-logo">
+            <span class="logo-mountain">▲</span>
+            <span>Explore <strong>Nepal</strong></span>
         </a>
 
-        <button class="menu-toggle" id="menuToggle"
-                aria-label="Toggle navigation">
-            ☰
-        </button>
-
-        <nav class="nav-links" id="navLinks">
-            <a class="active" href="#home">Home</a>
+        <nav class="explore-nav-links" id="exploreNav">
+            <a href="/" class="active">Home</a>
             <a href="#districts">Districts</a>
             <a href="#destinations">Places</a>
             <a href="#hotels">Hotels</a>
             <a href="#trip-planner">Trip Planner</a>
         </nav>
 
-        <div class="nav-actions">
-            <a href="#login" class="btn btn-outline">Login</a>
-            <a href="#signup" class="btn btn-primary">Sign Up</a>
+        <div class="explore-nav-actions">
+            <a href="/login" class="explore-login">Login</a>
+            <a href="/register" class="explore-signup">Sign Up</a>
         </div>
+
+        <button
+            class="explore-menu-toggle"
+            id="exploreMenuToggle"
+            type="button"
+            aria-label="Toggle navigation"
+            aria-expanded="false"
+        >
+            ☰
+        </button>
     </header>
 
-    <main>
-        <!-- HERO SECTION -->
-        <section class="hero" id="home">
-            <div class="hero-overlay"></div>
+    <!-- Dark overlay behind the text -->
+    <div class="explore-hero-overlay"></div>
 
-            <div class="hero-content">
-                <p class="eyebrow">DISCOVER THE BEAUTY OF NEPAL</p>
+    <!-- Hero content -->
+    <div class="explore-hero-inner">
 
-                <h1>Explore <span>Nepal</span></h1>
+        <div class="explore-hero-content">
 
-                <p class="hero-description">
-                    Discover beautiful destinations, explore all 77 districts,
-                    and find the perfect places to stay.
-                </p>
+            <p class="explore-eyebrow">
+                <span></span>
+                DISCOVER THE BEAUTY OF NEPAL
+            </p>
 
-                <form class="search-box" id="searchForm">
-                    <div class="search-field">
-                        <span>📍</span>
-                        <input
-                            type="search"
-                            id="districtSearch"
-                            placeholder="Search district..."
-                            list="districtOptions"
-                        >
+            <h1>
+                Explore <span>Nepal</span>
+            </h1>
 
-                        <datalist id="districtOptions">
-                            <option value="Kathmandu">
-                            <option value="Pokhara">
-                            <option value="Chitwan">
-                            <option value="Lalitpur">
-                            <option value="Mustang">
-                            <option value="Morang">
-                        </datalist>
-                    </div>
+            <p class="explore-hero-description">
+                Discover breathtaking destinations, explore all 77
+                districts, and find the perfect places to stay.
+            </p>
 
-                    <div class="search-field">
-                        <span>⌕</span>
-                        <input
-                            type="search"
-                            id="placeSearch"
-                            placeholder="Search places or hotels..."
-                        >
-                    </div>
+            <!-- Search bar -->
+            <form class="explore-search" id="exploreSearch">
 
-                    <button type="submit" class="btn search-btn">
-                        Search
-                    </button>
-                </form>
+                <label class="explore-search-field">
+                    <span class="search-icon">📍</span>
+                    <input
+                        type="text"
+                        id="districtSearch"
+                        placeholder="Search district..."
+                        aria-label="Search district"
+                    >
+                </label>
 
-                <p class="hero-note">
-                    Your journey starts here — discover Nepal, district by district.
-                </p>
-            </div>
-        </section>
+                <label class="explore-search-field">
+                    <span class="search-icon">⌕</span>
+                    <input
+                        type="text"
+                        id="placeSearch"
+                        placeholder="Search places or hotels..."
+                        aria-label="Search places or hotels"
+                    >
+                </label>
+
+                <button type="submit" class="explore-search-button">
+                    <span>⌕</span> Search
+                </button>
+
+            </form>
+
+            <p class="explore-journey-note">
+                <span>◎</span>
+                Your journey starts here — discover Nepal, district by district.
+            </p>
+
+        </div>
+
+        <!-- Features over the background image -->
+        <div class="explore-hero-features">
+
+            <a href="#districts" class="explore-feature">
+                <span class="explore-feature-icon">📍</span>
+                <span class="explore-feature-text">
+                    <strong>77 Districts</strong>
+                    <small>Explore every district</small>
+                </span>
+            </a>
+
+            <a href="#destinations" class="explore-feature">
+                <span class="explore-feature-icon">🏔️</span>
+                <span class="explore-feature-text">
+                    <strong>Tourist Places</strong>
+                    <small>Discover beautiful places</small>
+                </span>
+            </a>
+
+            <a href="#hotels" class="explore-feature">
+                <span class="explore-feature-icon">🛏️</span>
+                <span class="explore-feature-text">
+                    <strong>Hotels &amp; Stays</strong>
+                    <small>Find places to stay</small>
+                </span>
+            </a>
+
+            <a href="#trip-planner" class="explore-feature">
+                <span class="explore-feature-icon">🧭</span>
+                <span class="explore-feature-text">
+                    <strong>Trip Planner</strong>
+                    <small>Plan your journey</small>
+                </span>
+            </a>
+
+        </div>
+
+        <a href="#destinations" class="explore-scroll">
+            <span class="scroll-mouse">▯</span>
+            Scroll to explore
+            <span class="scroll-arrow">⌄</span>
+        </a>
+
+    </div>
+</section>
+
 
         <!-- FEATURES -->
         <section class="features">
