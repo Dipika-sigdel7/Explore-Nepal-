@@ -197,3 +197,76 @@ document.getElementById("year").textContent =
 
 // INITIALIZE DISTRICT DIRECTORY
 displayDistricts();
+
+
+
+
+/* =========================================
+   EXPLORE NEPAL — SCROLL REVEAL ANIMATIONS
+========================================= */
+
+document.documentElement.classList.add("reveal-ready");
+
+document.addEventListener("DOMContentLoaded", () => {
+    const revealSelectors = [
+        ".destination-card",
+        ".district-chip",
+        ".feature-item",
+        ".stat-item",
+        ".hotel-banner",
+        ".trip-cta",
+        ".section-heading",
+        ".district-explorer"
+    ];
+
+    const elements = document.querySelectorAll(
+        revealSelectors.join(", ")
+    );
+
+    elements.forEach((element) => {
+        element.classList.add("reveal");
+    });
+
+    // Show elements immediately if IntersectionObserver is unavailable
+    if (!("IntersectionObserver" in window)) {
+        elements.forEach((element) => {
+            element.classList.add("is-visible");
+        });
+        return;
+    }
+
+    const observer = new IntersectionObserver(
+        (entries, currentObserver) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("is-visible");
+                    currentObserver.unobserve(entry.target);
+                }
+            });
+        },
+        {
+            threshold: 0.12,
+            rootMargin: "0px 0px -35px 0px"
+        }
+    );
+
+    elements.forEach((element) => observer.observe(element));
+
+    // Subtle navbar shadow after scrolling
+    const navbar = document.querySelector(".navbar");
+
+    if (navbar) {
+        const updateNavbar = () => {
+            navbar.classList.toggle(
+                "navbar-scrolled",
+                window.scrollY > 30
+            );
+        };
+
+        window.addEventListener("scroll", updateNavbar, {
+            passive: true
+        });
+
+        updateNavbar();
+    }
+});
