@@ -200,8 +200,6 @@ displayDistricts();
 
 
 
-
-
 /* ============================================
    EXPLORE NEPAL — SCROLL REVEAL + NAV ANIMATION
 ============================================ */
