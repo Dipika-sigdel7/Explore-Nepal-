@@ -201,34 +201,30 @@ displayDistricts();
 
 
 
-/* =========================================
-   EXPLORE NEPAL — SCROLL REVEAL ANIMATIONS
-========================================= */
+
+/* ============================================
+   EXPLORE NEPAL — SCROLL REVEAL + NAV ANIMATION
+============================================ */
 
 document.documentElement.classList.add("reveal-ready");
 
 document.addEventListener("DOMContentLoaded", () => {
-    const revealSelectors = [
-        ".destination-card",
-        ".district-chip",
-        ".feature-item",
-        ".stat-item",
-        ".hotel-banner",
-        ".trip-cta",
+    const selectors = [
         ".section-heading",
-        ".district-explorer"
+        ".destination-card",
+        ".district-info",
+        ".map-card",
+        ".hotel-banner",
+        ".trip-content",
+        ".feature"
     ];
 
-    const elements = document.querySelectorAll(
-        revealSelectors.join(", ")
-    );
+    const elements = document.querySelectorAll(selectors.join(", "));
+    const reduceMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+    ).matches;
 
-    elements.forEach((element) => {
-        element.classList.add("reveal");
-    });
-
-    // Show elements immediately if IntersectionObserver is unavailable
-    if (!("IntersectionObserver" in window)) {
+    if (reduceMotion || !("IntersectionObserver" in window)) {
         elements.forEach((element) => {
             element.classList.add("is-visible");
         });
@@ -238,28 +234,31 @@ document.addEventListener("DOMContentLoaded", () => {
     const observer = new IntersectionObserver(
         (entries, currentObserver) => {
             entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add("is-visible");
-                    currentObserver.unobserve(entry.target);
-                }
+                if (!entry.isIntersecting) return;
+
+                entry.target.classList.add("is-visible");
+                currentObserver.unobserve(entry.target);
             });
         },
         {
             threshold: 0.12,
-            rootMargin: "0px 0px -35px 0px"
+            rootMargin: "0px 0px -25px 0px"
         }
     );
 
-    elements.forEach((element) => observer.observe(element));
+    elements.forEach((element) => {
+        element.classList.add("reveal");
+        observer.observe(element);
+    });
 
-    // Subtle navbar shadow after scrolling
+    // Add a shadow to the navbar after scrolling
     const navbar = document.querySelector(".navbar");
 
     if (navbar) {
         const updateNavbar = () => {
             navbar.classList.toggle(
                 "navbar-scrolled",
-                window.scrollY > 30
+                window.scrollY > 25
             );
         };
 
